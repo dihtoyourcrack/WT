@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS-type</title>
+    
+    <!-- External CSS (simulated with CDN link) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Embedded/Internal CSS -->
+    <style>
+        /* Base styles using embedded CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #d7d8d3cc, #4a7c23);
+            color: #006064;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        h1 {
+            background: linear-gradient(45deg, #00acc1, #0288d1);
+            padding: 15px;
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        h1:hover {
+            transform: scale(1.05);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        img {
+            width: 60%;
+            max-width: 400px;
+            border: 5px solid #00acc1;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        img:hover {
+            transform: scale(1.1);
+            border-color: #0288d1;
+        }
+        
+        .description {
+            font-size: 18px;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+        }
+        
+        .css-types {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .css-type {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 15px;
+            margin: 10px;
+            border-radius: 10px;
+            flex: 1;
+            min-width: 200px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .css-type:hover {
+            border-color: #00acc1;
+            transform: translateY(-5px);
+        }
+        
+        .css-type h3 {
+            color: #00acc1;
+            margin-bottom: 10px;
+        }
+        
+        .icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #00acc1;
+        }
+        
+        .note {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid #00acc1;
+        }
+        
+        /* External CSS simulation - these would normally be in a separate .css file */
+        .external-styles {
+            /* Font Awesome icons are loaded externally */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Inline CSS applied directly to h1 element -->
+        <h1 style="text-shadow: 2px 2px 4px rgba(0,0,0,0.3); font-size: 2.5em; letter-spacing: 2px;">
+            <i class="alt"></i> Ronaldo CSS Demo
+        </h1>
+        
+        <!-- Inline CSS on paragraph -->
+        <p class="description" style="font-weight: bold; color: #004d5a; text-shadow: 1px 1px 2px rgba(255,255,255,0.5);">
+            This page demonstrates all three types of CSS: External, Embedded, and Inline
+        </p>
+        
+        <!-- Inline CSS on image -->
+        <img src="./cristiano-ronaldo-3840x2160-9622.jpg" 
+             usemap="#phonemap" 
+             alt="Mobile Phone"
+             style="filter: brightness(1.1) contrast(1.2); animation: pulse 2s infinite;">
+        
+        <map name="phonemap">
+            <area shape="poly" coords="90,32,20,32,82,142,171,128" href="#speakers" alt="Speakers">
+        </map>
+        
+        <div class="css-types">
+            <!-- Inline CSS on each div -->
+            <div class="css-type" style="background: linear-gradient(45deg, rgba(255,107,107,0.3), rgba(255,182,193,0.3));">
+                <div class="icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Inline CSS</h3>
+                <p>Applied directly to HTML elements using the style attribute. Highest priority!</p>
+                <!-- Inline style example -->
+                <code style="background: rgba(0,0,0,0.1); padding: 5px; border-radius: 3px; display: block; margin-top: 10px;">
+                    style="color: red; font-size: 16px;"
+                </code>
+            </div>
+            
+            <div class="css-type" style="background: linear-gradient(45deg, rgba(78,205,196,0.3), rgba(85,239,196,0.3));">
+                <div class="icon">
+                    <i class="fas fa-file-code"></i>
+                </div>
+                <h3>Embedded CSS</h3>
+                <p>Written inside &lt;style&gt; tags in the HTML head. Medium priority.</p>
+                <code style="background: rgba(0,0,0,0.1); padding: 5px; border-radius: 3px; display: block; margin-top: 10px;">
+                    &lt;style&gt; body { color: blue; } &lt;/style&gt;
+                </code>
+            </div>
+            
+            <div class="css-type" style="background: linear-gradient(45deg, rgba(116,185,255,0.3), rgba(162,155,254,0.3));">
+                <div class="icon">
+                    <i class="fas fa-external-link-alt"></i>
+                </div>
+                <h3>External CSS</h3>
+                <p>Linked from separate .css files. Lowest priority but most maintainable.</p>
+                <code style="background: rgba(0,0,0,0.1); padding: 5px; border-radius: 3px; display: block; margin-top: 10px;">
+                    &lt;link href="styles.css" rel="stylesheet"&gt;
+                </code>
+            </div>
+        </div>
+        
+        <div class="note" style="border-left-width: 6px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            <h4 style="color: #00acc1; margin-top: 0;">CSS Priority Order (Cascade):</h4>
+            <p style="margin-bottom: 0; line-height: 1.6;">
+                1. <strong>Inline CSS</strong> (highest priority)<br>
+                2. <strong>Embedded CSS</strong> (medium priority)<br>
+                3. <strong>External CSS</strong> (lowest priority)
+            </p>
+        </div>
+    </div>
+
+    <!-- Inline CSS for animation keyframes in style tag -->
+    <style>
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .css-types {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2em !important;
+            }
+            
+            img {
+                width: 80%;
+            }
+        }
+    </style>
+</body>
+</html>

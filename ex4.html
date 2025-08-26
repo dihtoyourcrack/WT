@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Registration (Football)</title>
+  <style>
+    body { font-family: Arial; margin: 20px; }
+    label { display: block; margin-top: 10px; }
+    .error { color: red; font-size: small; }
+  </style>
+</head>
+<body>
+  <h2>Football League Registration</h2>
+
+  <form id="FootForm" onsubmit="return validateForm()">
+
+    <!-- 1. Player Name -->
+    <label>Player Name:</label>
+    <input type="text" id="name" required>
+    <span id="nameError" class="error"></span>
+
+    <!-- 2. Age -->
+    <label>Age:</label>
+    <input type="number" id="age" required>
+    <span id="ageError" class="error"></span>
+
+    <!-- 3. Email -->
+    <label>Email:</label>
+    <input type="email" id="email" required>
+    <span id="emailError" class="error"></span>
+
+    <!-- 4. Phone -->
+    <label>Phone Number:</label>
+    <input type="tel" id="phone" pattern="[0-9]{10}" placeholder="10 digits" required>
+    <span id="phoneError" class="error"></span>
+
+    <!-- 5. Team Name -->
+    <label>Team Name:</label>
+    <input type="text" id="team" required>
+    <span id="teamError" class="error"></span>
+
+    
+    <label>Position:</label>
+    <select id="batting" required>
+      <option value="">--Select--</option>
+      <option>GoalKeeper</option>
+      <option>Defender</option>
+      <option>MidFeilder</option>
+      <option>Attacker</option>
+    </select>
+    <span id="PositionError" class="error"></span>
+
+    
+    <label>Role:</label>
+    <select id="role" required>
+      <option value="">--Select--</option>
+      <option>Right-Back</option>
+      <option>Left-Back</option>
+      <option>Centre-Back</option>
+      <option>Centre-Defensive-Midfeilder</option>
+      <option>Centre-Attacking-Midfielder</option>
+      <option>Centre-Mid</option>
+      <option>Left-Winger</option>
+      <option>Right-Winger</option>
+      <option>Centre-Forward</option>
+      
+    </select>
+    <span id="RoleError" class="error"></span>
+
+    
+    <label>Jersey Number (1-40):</label>
+    <input type="number" id="jersey" min="1" max="40" required>
+    <span id="jerseyError" class="error"></span>
+
+    
+    <label>Years of Experience:</label>
+    <input type="number" id="exp" min="0" max="20">
+    <label>Emergency Contact:</label>
+    <input type="tel" id="emergency" pattern="[0-9]{10}" placeholder="10-digit">
+
+    <label>Comments:</label>
+    <textarea id="comments"></textarea>
+
+    <br><br>
+    <input type="submit" value="Register">
+  </form>
+
+  <script>
+    function validateForm() {
+      let valid = true;
+
+      // 1. Name
+      let name = document.getElementById("name").value;
+      if (name.length < 3) {
+        document.getElementById("nameError").innerText = "Name must be at least 3 chars";
+        valid = false;
+      } else { document.getElementById("nameError").innerText = ""; }
+
+      // 2. Age
+      let age = document.getElementById("age").value;
+      if (age < 12 || age > 50) {
+        document.getElementById("ageError").innerText = "Age must be 12-50";
+        valid = false;
+      } else { document.getElementById("ageError").innerText = ""; }
+
+      // 3. Email
+      let email = document.getElementById("email").value;
+      let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      if (!emailPattern.test(email)) {
+        document.getElementById("emailError").innerText = "Invalid email";
+        valid = false;
+      } else { document.getElementById("emailError").innerText = ""; }
+
+      // 4. Phone
+      let phone = document.getElementById("phone").value;
+      if (!/^[0-9]{10}$/.test(phone)) {
+        document.getElementById("phoneError").innerText = "Enter 10 digit number";
+        valid = false;
+      } else { document.getElementById("phoneError").innerText = ""; }
+
+      // 5. Team
+      let team = document.getElementById("team").value;
+      if (team.length < 2) {
+        document.getElementById("teamError").innerText = "Team name too short";
+        valid = false;
+      } else { document.getElementById("teamError").innerText = ""; }
+
+      // 6. Batting
+      let batting = document.getElementById("batting").value;
+      if (batting === "") {
+        document.getElementById("battingError").innerText = "Select batting style";
+        valid = false;
+      } else { document.getElementById("battingError").innerText = ""; }
+
+      // 7. Bowling
+      let bowling = document.getElementById("bowling").value;
+      if (bowling === "") {
+        document.getElementById("bowlingError").innerText = "Select bowling style";
+        valid = false;
+      } else { document.getElementById("bowlingError").innerText = ""; }
+
+      // 8. Jersey
+      let jersey = document.getElementById("jersey").value;
+      if (jersey < 1 || jersey > 99) {
+        document.getElementById("jerseyError").innerText = "Jersey 1-99 only";
+        valid = false;
+      } else { document.getElementById("jerseyError").innerText = ""; }
+
+      return valid;
+    }
+  </script>
+</body>
+</html>
+
